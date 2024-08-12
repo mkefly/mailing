@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "livedesk-mailing-list"
+version = "0.1.0"
+description = ""
+authors = ["Miquel Oliver <miquel_oli@me.com>"]
+readme = "README.md"
+packages = [
+    { include = "livedesk_mailing_list" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<=3.12"
+mlflow = "^2.15.1"
+numpy = "<2.0.0"
+scikit-learn = "^1.5.1"
+xgboost = "^2.1.1"
+lightgbm = "^4.5.0"
+transformers = "^4.44.0"
+torch = "^2.4.0"
+shap = "^0.46.0"
+loguru = "^0.7.2"
+hyperopt = "^0.2.7"
+pyyaml = "^6.0.2"
+faker = "^26.3.0"
+setuptools = "^72.1.0"
+gensim = "^4.3.3"
+alibi = "^0.9.6"
+lime = "^0.2.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

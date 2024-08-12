@@ -1,0 +1,52 @@
+fixed_params:
+  model_type: lgbm
+  lgbm_params:
+    n_estimators: 100
+    learning_rate: 0.05
+    num_leaves: 31
+    max_depth: -1
+
+pipeline:
+  features:
+    use_content: true
+  embedding_type: 'word2vec'  # Specify Word2Vec as the embedding method
+
+word2vec_params:
+  vector_size: 100
+  window: 5
+  min_count: 2
+  sg: 0  # 0 for CBOW, 1 for skip-gram
+  workers: 4
+
+cv_folds: 3
+evaluation_metric: f1
+
+
+interpretability:
+
+  lime:
+    instance_index: 0  # The index of the instance to explain with LIME
+
+  permutation_importance:
+    n_repeats: 10  # Number of times to permute a feature
+    random_state: 42  # Random seed for reproducibility
+
+  feature_importance:
+    save_plot: true  # Whether to save the feature importance plot
+
+  pdp:
+    features:
+      - "feature1"
+      - "feature2"  # List of features for Partial Dependence Plots (PDP)
+    grid_resolution: 100  # The resolution of the grid for PDP
+
+  counterfactual:
+    instance_index: 0  # The index of the instance to generate a counterfactual for
+    target_class: 1  # The target class to generate a counterfactual for
+
+  interaction:
+    model_type: "xgboost"  # The type of model being used for SHAP interaction values
+
+  surrogate:
+    max_depth: 3  # Maximum depth of the surrogate decision tree
+    save_tree: true  # Whether to save the surrogate tree structure
